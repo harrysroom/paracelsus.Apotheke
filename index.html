@@ -197,7 +197,156 @@
 
   /* ---------- SERVICES ---------- */
   .services{background:var(--sand-100);}
-< truncated lines 200-349 >
+  .service-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:20px;}
+  .service-card{
+    background:var(--sand-50);border-radius:var(--radius-md);padding:26px 24px;
+    border:1px solid rgba(22,51,44,0.08);
+    transition:transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+  }
+  .service-card:hover{transform:translateY(-6px);box-shadow:0 16px 32px rgba(22,51,44,0.1);border-color:var(--sage-400);}
+  .service-card .icon{
+    width:44px;height:44px;border-radius:12px;background:var(--green-900);color:var(--sand-50);
+    display:flex;align-items:center;justify-content:center;font-size:1.2rem;margin-bottom:16px;
+  }
+  .service-card h3{font-size:1.08rem;color:var(--green-950);margin-bottom:8px;font-weight:600;}
+  .service-card p{font-size:0.92rem;color:#5a6b62;line-height:1.5;}
+
+  /* ---------- ORDER OPTIONS ---------- */
+  .order-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:18px;}
+  .order-card{
+    display:flex;flex-direction:column;gap:10px;
+    background:var(--green-900);color:var(--sand-50);
+    border-radius:var(--radius-md);padding:24px;
+    transition:transform 0.25s ease, background 0.25s ease;
+  }
+  .order-card:hover{transform:translateY(-6px);background:var(--green-800);}
+  .order-card .icon{font-size:1.5rem;}
+  .order-card h3{font-size:1rem;font-weight:600;}
+  .order-card span.detail{font-family:'JetBrains Mono',monospace;font-size:0.82rem;color:var(--sage-200);}
+
+  /* ---------- TIMELINE (real sequence, dates justified) ---------- */
+  .timeline{background:var(--sand-100);}
+  .tl{position:relative;margin-top:20px;padding-left:28px;border-left:2px solid var(--sage-400);}
+  .tl-item{position:relative;padding-bottom:40px;}
+  .tl-item:last-child{padding-bottom:0;}
+  .tl-item::before{
+    content:"";position:absolute;left:-34px;top:4px;width:12px;height:12px;border-radius:50%;
+    background:var(--gold-500);border:3px solid var(--sand-100);
+  }
+  .tl-item .yr{font-family:'JetBrains Mono',monospace;font-weight:600;color:var(--gold-600);font-size:0.95rem;}
+  .tl-item h3{margin-top:4px;font-size:1.15rem;color:var(--green-950);}
+  .tl-item p{margin-top:6px;color:#5a6b62;font-size:0.95rem;line-height:1.55;max-width:56ch;}
+
+  /* ---------- TEAM ---------- */
+  .team-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:16px;}
+  .team-card{
+    background:var(--sand-100);border-radius:var(--radius-md);padding:18px 14px;text-align:center;
+    transition:transform 0.2s ease;
+  }
+  .team-card:hover{transform:translateY(-4px);}
+  .avatar{
+    width:56px;height:56px;border-radius:50%;margin:0 auto 12px;
+    background:linear-gradient(135deg,var(--sage-400),var(--green-800));
+    display:flex;align-items:center;justify-content:center;color:#fff;font-weight:600;font-family:'Fraunces',serif;
+  }
+  .team-card h4{font-size:0.92rem;color:var(--green-950);font-weight:600;}
+  .team-card p{font-size:0.78rem;color:#6b7a72;margin-top:3px;}
+
+  /* ---------- HOURS + CONTACT ---------- */
+  .contact{background:var(--green-950);color:var(--sand-50);}
+  .contact .section-head p{color:var(--sage-200);}
+  .contact .section-head .eyebrow{color:var(--gold-500);}
+  .contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:40px;}
+  @media(max-width:800px){ .contact-grid{grid-template-columns:1fr;} }
+  table.hours{width:100%;border-collapse:collapse;font-size:0.95rem;}
+  table.hours td{padding:10px 0;border-bottom:1px solid rgba(255,255,255,0.1);}
+  table.hours td:last-child{text-align:right;font-family:'JetBrains Mono',monospace;color:var(--sage-200);}
+  table.hours tr.today td{color:var(--gold-500);font-weight:600;}
+  .contact-info p{margin-bottom:10px;color:var(--sage-200);font-size:0.98rem;}
+  .contact-info a:hover{color:var(--gold-500);}
+  .langs{display:flex;flex-wrap:wrap;gap:8px;margin-top:16px;}
+  .langs span{
+    border:1px solid rgba(255,255,255,0.2);padding:5px 12px;border-radius:999px;font-size:0.78rem;
+    color:var(--sage-200);
+  }
+
+  footer{
+    background:var(--green-950);color:var(--sage-200);
+    border-top:1px solid rgba(255,255,255,0.08);
+    padding:28px 0;font-size:0.82rem;
+  }
+  footer .wrap{display:flex;flex-wrap:wrap;gap:12px;justify-content:space-between;}
+  footer a:hover{color:var(--gold-500);}
+</style>
+</head>
+<body>
+
+<header>
+  <nav class="wrap">
+    <div class="logo"><span class="cross" aria-hidden="true"></span> Paracelsus Apotheke</div>
+    <div class="nav-links">
+      <ul>
+        <li><a href="#leistungen">Leistungen</a></li>
+        <li><a href="#vorbestellen">Vorbestellen</a></li>
+        <li><a href="#geschichte">Geschichte</a></li>
+        <li><a href="#team">Team</a></li>
+        <li><a href="#kontakt">Kontakt</a></li>
+      </ul>
+      <a class="nav-cta" href="tel:+4961463377">06146 3377</a>
+    </div>
+  </nav>
+</header>
+
+<section class="hero">
+  <div class="wrap hero-grid">
+    <div>
+      <span class="eyebrow">Weiherstr. 25 · Hochheim am Main</span>
+      <h1>Gesundheit, <em>persönlich</em><br>seit 1973.</h1>
+      <p class="lead">Die Paracelsus Apotheke berät, versorgt und beliefert Hochheim und Massenheim – mit Zeit für Ihre Fragen und einem Team, das Sie beim Namen kennt.</p>
+      <div class="hero-actions">
+        <a class="btn btn-primary" href="#vorbestellen">Rezept vorbestellen</a>
+        <a class="btn btn-ghost" href="#kontakt">Öffnungszeiten &amp; Anfahrt</a>
+      </div>
+    </div>
+
+    <div class="capsule-card">
+      <div class="capsule" id="statusCapsule">
+        <div class="dot-wrap"><span class="pulse" aria-hidden="true"></span><span class="dot"></span></div>
+        <span class="status-text">
+          <span class="label" id="statusLabel">Status wird geladen …</span>
+          <span class="sub" id="statusSub">&nbsp;</span>
+        </span>
+      </div>
+      <div class="clock">
+        <span>Aktuelle Uhrzeit</span>
+        <span class="time" id="liveClock">--:--:--</span>
+      </div>
+      <div class="today-hours">
+        <span>Heute</span>
+        <span id="todayHours" class="mono">–</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="services" id="leistungen">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="eyebrow">Leistungen</span>
+      <h2>Mehr als nur der Handverkauf</h2>
+      <p>Von der Blutdruckmessung bis zur Reiseapotheke – unser Team berät Sie umfassend, nicht nur am Ausgabetresen.</p>
+    </div>
+    <div class="service-grid">
+      <div class="service-card reveal"><div class="icon">♥</div><h3>Blutdruck &amp; Diabetes</h3><p>Kostenlose Messung und individuelle Beratung zu Blutdruck und Blutzucker.</p></div>
+      <div class="service-card reveal"><div class="icon">✈</div><h3>Reiseapotheke &amp; Impfungen</h3><p>Zusammenstellung Ihrer Reiseapotheke inklusive Beratung zu Reiseimpfungen.</p></div>
+      <div class="service-card reveal"><div class="icon">🍼</div><h3>Verleih</h3><p>Babywaagen, Milchpumpen und Inhalationsgeräte leihweise für Familien.</p></div>
+      <div class="service-card reveal"><div class="icon">🌿</div><h3>Homöopathie</h3><p>Beratung für Mensch und Tier aus dem homöopathischen Arzneischatz.</p></div>
+      <div class="service-card reveal"><div class="icon">🧦</div><h3>Kompressionsstrümpfe</h3><p>Individuelles Ausmessen und Anpassen medizinischer Kompressionsstrümpfe.</p></div>
+      <div class="service-card reveal"><div class="icon">🚲</div><h3>Zustelldienst</h3><p>Täglicher Botendienst nach Hochheim und Massenheim – bequem nach Hause.</p></div>
+      <div class="service-card reveal"><div class="icon">💇</div><h3>Kosmetik &amp; Ernährung</h3><p>Individuelle Beratung rund um Hautpflege, Kosmetik und Ernährung.</p></div>
+      <div class="service-card reveal"><div class="icon">🎁</div><h3>Kundenkarte &amp; Gutscheine</h3><p>Vorteile sammeln mit der Kundenkarte oder ein Geschenk verschenken.</p></div>
+    </div>
+  </div>
 </section>
 
 <section id="vorbestellen">
